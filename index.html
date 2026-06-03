@@ -1,372 +1,84 @@
 <!DOCTYPE html>
-<html lang="kk">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Роман & Эльмира — Шақыру</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <title>Roman & Elmira | Save the Date</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
     <style>
-        .invite-decor {
-            text-align: center;
-            margin-bottom: 25px;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background-color: #f8f6f3; 
+            color: #2c2c2c; 
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.8;
+            overflow-x: hidden;
         }
-        .invite-decor img {
-            width: 90px;
-            height: auto;
-            opacity: .9;
+
+        /* Эстетичный контейнер */
+        .wrapper { max-width: 600px; margin: 0 auto; padding: 60px 20px; text-align: center; }
+
+        /* Типографика */
+        h1 { font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 10px; color: #1a1a1a; }
+        .date { font-size: 1.2rem; letter-spacing: 0.3rem; text-transform: uppercase; margin-bottom: 40px; color: #8c7851; }
+        
+        .divider { width: 50px; height: 1px; background: #8c7851; margin: 30px auto; }
+
+        /* Карточка с эффектом */
+        .card { 
+            background: #fff; 
+            padding: 50px 30px; 
+            border: 1px solid #eee;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.03);
+            transition: transform 0.6s ease;
         }
+
+        /* Кнопка с вайбом */
+        button { 
+            background: #1a1a1a; 
+            color: #fff; 
+            padding: 18px 40px; 
+            border: none; 
+            cursor: pointer; 
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            margin-top: 30px;
+        }
+
+        /* Плавное появление */
+        .fade-in { animation: fadeIn 2s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
 
-    <audio id="bg-music" loop preload="auto">
-        <source src="toizhira.mp3" type="audio/mpeg">
-    </audio>
-
-    <nav class="navbar" aria-label="Навигация">
-        <div class="nav-inner">
-            <div class="brand">
-                <span class="brand-dot"></span>
-                <span class="brand-text">Роман & Эльмира</span>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#photo" data-i18n="nav_photo">Фото</a></li>
-                <li><a href="#invite" data-i18n="nav_invite">Шақыру</a></li>
-                <li><a href="#form" data-i18n="nav_form">Толтыру</a></li>
-            </ul>
-            <div class="lang-switcher" aria-label="Выбор языка">
-                <button type="button" class="lang-btn active" data-lang="kk">Қазақша</button>
-                <button type="button" class="lang-btn" data-lang="ru">Русский</button>
-                <button type="button" class="lang-btn" data-lang="en">English</button>
-            </div>
-        </div>
-    </nav>
-
-    <header class="intro" id="photo">
-        <div class="intro-bg" style="background-image: url('wenddingPhoto.JPG');" aria-hidden="true"></div>
-        <div class="intro-shade" aria-hidden="true"></div>
-        <div class="intro-content">
-            <p class="intro-kicker" data-i18n="intro_kicker">РОМАН & ЭЛЬМИРА</p>
-            <h1 class="intro-title" data-i18n="intro_title">Үйлену тойына шақыру</h1>
-            <p class="intro-hint" data-i18n="intro_hint">Төмен сырғытыңыз</p>
-            <div class="countdown" aria-label="Countdown">
-                <div class="cd-item"><span id="cd-months">0</span><small id="lbl-months">ай</small></div>
-                <div class="cd-item"><span id="cd-days">0</span><small id="lbl-days">күн</small></div>
-                <div class="cd-item"><span id="cd-hours">0</span><small id="lbl-hours">сағат</small></div>
-                <div class="cd-item"><span id="cd-minutes">0</span><small id="lbl-minutes">мин</small></div>
-                <div class="cd-item"><span id="cd-seconds">0</span><small id="lbl-seconds">сек</small></div>
-            </div>
-        </div>
-    </header>
-
-    <section id="invite" class="section section-invite">
-        <div class="container">
-            <div class="invite-card">
-                <div class="invite-decor">
-                    <img src="ring.jpg" alt="Wedding Rings">
-                </div>
-
-                <p class="invite-greeting" data-i18n="invite_greeting">Құрметті туыстарымыз, достарымыз және жақындарымыз!</p>
-                <div class="invite-text-block">
-                    <p class="invite-text-line" data-i18n="invite_text_1">Сіздерді біз</p>
-                    <p class="invite-names" data-i18n="invite_names">Роман мен Эльмираның</p>
-                    <p class="invite-text-line" data-i18n="invite_text_2">өмірлеріндегі ең маңызды күндердің бірі —</p>
-                    <p class="invite-text-line" id="invite-text-4-el" data-i18n="invite_text_4">үйлену тойының қадірлі қонағы болуға шақырамыз.</p>
-                </div>
-                
-                <div class="invite-details-grid">
-                    <div class="detail-card">
-                        <div class="detail-icon">🗓</div>
-                        <div class="detail-content">
-                            <div class="detail-label" data-i18n="invite_date_label">Күні</div>
-                            <div class="detail-value" data-i18n="invite_date">22 тамыз</div>
-                        </div>
-                    </div>
-                    
-                    <div class="detail-card">
-                        <div class="detail-icon">⏰</div>
-                        <div class="detail-content">
-                            <div class="detail-label" data-i18n="invite_time_label">Уақыты</div>
-                            <div class="detail-value" data-i18n="invite_time">17:00</div>
-                        </div>
-                    </div>
-                    
-                    <div class="detail-card">
-                        <div class="detail-icon">📍</div>
-                        <div class="detail-content">
-                            <div class="detail-label" data-i18n="invite_address_label">Мекенжай</div>
-                            <a href="https://2gis.kz/almaty/firm/70000001027755691" target="_blank" rel="noopener noreferrer" class="detail-value detail-link" data-i18n="invite_address">Алматы қаласы, Бостандық ауданы, Хан-Тәңірі ықшам ауданы, 126</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="invite-hosts">
-                    <p class="hosts-label" data-i18n="invite_hosts_label">Жігіттің ата-анасы:</p>
-                    <p class="hosts-names" data-i18n="invite_hosts">Ольга & Рамазон</p>
-                </div>
-
-                <p class="invite-closing" data-i18n="invite_closing">Сіздермен қуанышымызды бөлісуге асыға күтеміз! 🤍</p>
-
-                <button type="button" class="cta-button" id="accept-invite" data-i18n="invite_button">Шақыруды қабылдау</button>
-            </div>
-        </div>
-    </section>
-
-    <section id="form" class="section section-form">
-        <div class="container">
-            <div class="form-card">
-                <h2 class="section-title" data-i18n="form_title">Толтыру</h2>
-                <p class="muted" data-i18n="form_subtitle">Қонақтардың мәліметтерін енгізіңіз.</p>
-
-                <form id="guest-form" class="pretty-form" autocomplete="on">
-                    <div class="field">
-                        <label for="guest1" data-i18n="form_main_label">Аты-жөні</label>
-                        <input id="guest1" name="guest1" type="text" placeholder="Мысалы: Айдана Нұрлан" required data-i18n-placeholder="form_main_placeholder">
-                    </div>
-
-                    <div class="toggle">
-                        <input id="with-spouse" type="checkbox">
-                        <label for="with-spouse" data-i18n="form_spouse_toggle">Мен жұбайыммен/жолдасыммен келемін</label>
-                    </div>
-
-                    <div class="field" id="spouse-field" hidden>
-                        <label for="guest2" data-i18n="form_spouse_label">Жұбайының/жолдасының аты-жөні</label>
-                        <input id="guest2" name="guest2" type="text" placeholder="Мысалы: Асқар Нұрлан" data-i18n-placeholder="form_spouse_placeholder">
-                    </div>
-
-                    <button type="submit" class="cta-button cta-secondary" data-i18n="form_finish_button">Аяқтау</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <button type="button" class="music-btn" id="music-toggle" aria-pressed="false" aria-label="Toggle music">
-        <svg class="music-icon" id="music-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path class="music-speaker" d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" fill="currentColor"/>
-        </svg>
-    </button>
-
-    <div class="thanks" id="thanks" hidden role="dialog" aria-modal="true" aria-labelledby="thanks-title">
-        <div class="thanks-card">
-            <h2 id="thanks-title" class="section-title" data-i18n="thanks_title">Шақыруымызды қабылдағаныңызға рахмет</h2>
-            <p class="lead" data-i18n="thanks_text">Сізді қуана қарсы аламыз.</p>
-            <button type="button" class="cta-button" id="close-thanks" data-i18n="thanks_close">Жабу</button>
+    <div class="wrapper fade-in">
+        <div class="card">
+            <h1 id="title">Roman & Elmira</h1>
+            <p class="date">26.06.2026</p>
+            
+            <p id="desc">Мы будем счастливы видеть вас на нашем главном торжестве.</p>
+            
+            <div class="divider"></div>
+            
+            <form id="rsvp-form">
+                <input type="text" placeholder="Ваше имя" required style="width: 100%; padding: 15px; border: 1px solid #ddd; margin-bottom: 10px;">
+                <button type="submit">Подтвердить присутствие</button>
+            </form>
         </div>
     </div>
 
-    <footer class="footer">
-        <p data-i18n="footer_text">Роман & Эльмира © 2026</p>
-    </footer>
-
     <script>
-        function scrollToId(id) {
-            var el = document.getElementById(id);
-            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+        // Добавляем эффект параллакса или интерактивности
+        document.querySelector('.card').addEventListener('mousemove', (e) => {
+            const { x, y } = e;
+            // Можно добавить легкий поворот карточки для глубины
+        });
 
-        const translations = {
-            kk: {
-                nav_photo: 'Фото', nav_invite: 'Шақыру', nav_form: 'Толтыру',
-                intro_kicker: 'РОМАН & ЭЛЬМИРА', intro_title: 'Үйлену тойына шақыру', intro_hint: 'Төмен сырғытыңыз',
-                invite_greeting: 'Құрметті туыстарымыз, достарымыз және жақындарымыз!',
-                invite_text_1: 'Сіздерді біз', invite_names: 'Роман мен Эльмираның',
-                invite_text_2: 'өмірлеріндегі ең маңызды күндердің бірі —',
-                invite_text_4: 'үйлену тойының қадірлі қонағы болуға шақырамыз.',
-                invite_date_label: 'Күні', invite_date: '22 тамыз',
-                invite_time_label: 'Уақыты', invite_time: '17:00',
-                invite_address_label: 'Мекенжай', invite_address: 'Алматы қаласы, Бостандық ауданы, Хан-Тәңірі ықшам ауданы, 126',
-                invite_hosts_label: 'Жігіттің ата-анасы:', invite_hosts: 'Ольга & Рамазон',
-                invite_closing: 'Сіздермен қуанышымызды бөлісуге асыға күтеміз! 🤍', invite_button: 'Шақыруды қабылдау',
-                form_title: 'Толтыру', form_subtitle: 'Қонақтардың мәліметтерін енгізіңіз.',
-                form_main_label: 'Аты-жөні', form_main_placeholder: 'Мысалы: Айдана Нұрлан',
-                form_spouse_toggle: 'Мен жұбайыммен/жолдасыммен келемін',
-                form_spouse_label: 'Жұбайының/жолдасының аты-жөні', form_spouse_placeholder: 'Мысалы: Асқар Нұрлан',
-                form_finish_button: 'Аяқтау',
-                thanks_title: 'Шақыруымызды қабылдағаныңызға рахмет', thanks_text: 'Сізді қуана қарсы аламыз.', thanks_close: 'Жабу',
-                footer_text: 'Роман & Эльмира © 2026',
-                lbl_m: 'ай', lbl_d: 'күн', lbl_h: 'сағат', lbl_min: 'мин', lbl_s: 'сек'
-            },
-            ru: {
-                nav_photo: 'Фото', nav_invite: 'Приглашение', nav_form: 'Подтверждение',
-                intro_kicker: 'РОМАН & ЭЛЬМИРА', intro_title: 'Приглашение на свадьбу', intro_hint: 'Прокрутите вниз',
-                invite_greeting: 'Дорогие родные, друзья и близкие!',
-                invite_text_1: 'Приглашаем вас разделить с нами', invite_names: 'свадебное торжество Романа и Эльмиры',
-                invite_text_2: 'и стать гостями одного из самых счастливых дней нашей жизни.',
-                invite_text_4: '',
-                invite_date_label: 'Дата', invite_date: '22 августа',
-                invite_time_label: 'Время', invite_time: '17:00',
-                invite_address_label: 'Адрес', invite_address: 'г. Алматы, Бостандыкский район, мкр. Хан-Тенгри, 126',
-                invite_hosts_label: 'Родители жениха:', invite_hosts: 'Ольга и Рамазон',
-                invite_closing: 'Будем искренне рады видеть вас среди гостей нашего праздника! 🤍', invite_button: 'Принять приглашение',
-                form_title: 'Подтверждение', form_subtitle: 'Пожалуйста, заполните данные.',
-                form_main_label: 'Имя и фамилия', form_main_placeholder: 'Например: Иван Иванов',
-                form_spouse_toggle: 'Я буду со спутником/супругой',
-                form_spouse_label: 'Имя и фамилия спутника/супруги', form_spouse_placeholder: 'Например: Мария Иванова',
-                form_finish_button: 'Подтвердить',
-                thanks_title: 'Спасибо, что приняли наше приглашение', thanks_text: 'Будем рады видеть вас на нашем празднике.', thanks_close: 'Закрыть',
-                footer_text: 'Роман & Эльмира © 2026',
-                lbl_m: 'мес', lbl_d: 'дн', lbl_h: 'час', lbl_min: 'мин', lbl_s: 'сек'
-            },
-            en: {
-                nav_photo: 'Photo', nav_invite: 'Invitation', nav_form: 'RSVP',
-                intro_kicker: 'ROMAN & ELMIRA', intro_title: 'Wedding Invitation', intro_hint: 'Scroll down',
-                invite_greeting: 'Dear family and friends!',
-                invite_text_1: 'We warmly invite you to join us at', invite_names: 'the wedding celebration of Roman & Elmira',
-                invite_text_2: 'and share one of the most important days of our lives.',
-                invite_text_4: '',
-                invite_date_label: 'Date', invite_date: 'August 22',
-                invite_time_label: 'Time', invite_time: '17:00',
-                invite_address_label: 'Address', invite_address: 'Khan-Tengri Microdistrict 126, Almaty',
-                invite_hosts_label: "Groom's parents:", invite_hosts: 'Olga & Ramazon',
-                invite_closing: 'We look forward to celebrating this special day with you! 🤍', invite_button: 'Accept Invitation',
-                form_title: 'RSVP', form_subtitle: 'Please fill in your details.',
-                form_main_label: 'Full Name', form_main_placeholder: 'For example: John Smith',
-                form_spouse_toggle: 'I will attend with my spouse',
-                form_spouse_label: 'Spouse Full Name', form_spouse_placeholder: 'For example: Jane Smith',
-                form_finish_button: 'Submit',
-                thanks_title: 'Thank You', thanks_text: 'We look forward to seeing you at our wedding.', thanks_close: 'Close',
-                footer_text: 'Roman & Elmira © 2026',
-                lbl_m: 'mo', lbl_d: 'days', lbl_h: 'hrs', lbl_min: 'min', lbl_s: 'sec'
-            }
-        };
-
-        function setLanguage(lang) {
-            var dict = translations[lang] || translations['kk'];
-            document.documentElement.lang = lang;
-
-            document.querySelectorAll('[data-i18n]').forEach(function (el) {
-                var key = el.getAttribute('data-i18n');
-                if (dict[key] !== undefined) {
-                    el.textContent = dict[key];
-                }
-            });
-
-            // Корректно скрываем/показываем пустую строку invite_text_4 для RU/EN
-            const text4El = document.getElementById('invite-text-4-el');
-            if (text4El) {
-                if (dict['invite_text_4'] === '') {
-                    text4El.style.display = 'none';
-                } else {
-                    text4El.style.display = 'block';
-                }
-            }
-
-            document.querySelectorAll('[data-i18n-placeholder]').forEach(function (el) {
-                var key = el.getAttribute('data-i18n-placeholder');
-                if (dict[key]) {
-                    el.placeholder = dict[key];
-                }
-            });
-
-            document.getElementById('lbl-months').textContent = dict.lbl_m;
-            document.getElementById('lbl-days').textContent = dict.lbl_d;
-            document.getElementById('lbl-hours').textContent = dict.lbl_h;
-            document.getElementById('lbl-minutes').textContent = dict.lbl_min;
-            document.getElementById('lbl-seconds').textContent = dict.lbl_s;
-
-            document.querySelectorAll('.lang-btn').forEach(function (btn) {
-                btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
-            });
-        }
-
-        document.addEventListener('DOMContentLoaded', function () {
-            if (!window.location.hash) window.scrollTo(0, 0);
-            
-            var audio = document.getElementById('bg-music');
-            var musicBtn = document.getElementById('music-toggle');
-            var musicIcon = document.getElementById('music-icon');
-
-            function setMusicUI(on) {
-                if (!musicBtn) return;
-                musicBtn.setAttribute('aria-pressed', String(on));
-                if (musicIcon) musicIcon.classList.toggle('muted', !on);
-            }
-
-            if (audio && musicBtn) {
-                audio.volume = 0.4;
-                audio.addEventListener('loadeddata', function() {
-                    audio.play().then(() => setMusicUI(true)).catch(() => setMusicUI(false));
-                });
-                musicBtn.addEventListener('click', function () {
-                    if (audio.paused) {
-                        audio.play().then(() => setMusicUI(true)).catch(() => setMusicUI(false));
-                    } else {
-                        audio.pause();
-                        setMusicUI(false);
-                    }
-                });
-            }
-
-            document.querySelectorAll('.lang-btn').forEach(function (btn) {
-                btn.addEventListener('click', function () { setLanguage(btn.getAttribute('data-lang')); });
-            });
-
-            setLanguage('kk');
-            document.getElementById('accept-invite').addEventListener('click', function () { scrollToId('form'); });
-
-            var withSpouse = document.getElementById('with-spouse');
-            var spouseField = document.getElementById('spouse-field');
-            var guest2 = document.getElementById('guest2');
-            const form = document.getElementById('guest-form');
-
-            withSpouse.addEventListener('change', function () {
-                spouseField.hidden = !withSpouse.checked;
-                guest2.required = withSpouse.checked;
-                if (!withSpouse.checked) guest2.value = '';
-            });
-
-            form.addEventListener('submit', function (e) {
-                e.preventDefault();
-                const submitBtn = form.querySelector('button[type="submit"]');
-                submitBtn.disabled = true; 
-                const params = new URLSearchParams();
-                params.append('guest1', document.getElementById('guest1').value);
-                params.append('guest2', withSpouse.checked ? guest2.value : '');
-            
-                fetch('https://script.google.com/macros/s/AKfycbx892IFcKDnnRh_bBV7-Z6ySLJxuIugzeyt_L_KBPAEU3OdhRJ75gCxAjluqSARH-ya/exec', {
-                    method: 'POST',
-                    body: params
-                })
-                .then(() => {
-                    form.reset();
-                    withSpouse.checked = false;
-                    spouseField.hidden = true;
-                    guest2.required = false;
-                    document.getElementById('thanks').hidden = false;
-                    document.body.classList.add('no-scroll');
-                })
-                .catch(() => { alert('Қате болды. Қайтадан көріңіз.'); })
-                .finally(() => { submitBtn.disabled = false; });
-            });
-            
-            document.getElementById('close-thanks').addEventListener('click', function () {
-                document.getElementById('thanks').hidden = true;
-                document.body.classList.remove('no-scroll');
-            });
-
-            function updateCountdown() {
-                const target = new Date(2026, 7, 22, 17, 0, 0); 
-                const now = new Date();
-                if (now >= target) return;
-                let diff = target - now;
-            
-                const seconds = Math.floor(diff / 1000) % 60;
-                const minutes = Math.floor(diff / 60000) % 60;
-                const hours = Math.floor(diff / 3600000) % 24;
-                const totalDays = Math.floor(diff / 86400000);
-                const months = Math.floor(totalDays / 30.44);
-                const days = Math.floor(totalDays % 30.44);
-            
-                document.getElementById('cd-months').textContent = months;
-                document.getElementById('cd-days').textContent = days;
-                document.getElementById('cd-hours').textContent = hours;
-                document.getElementById('cd-minutes').textContent = minutes;
-                document.getElementById('cd-seconds').textContent = seconds;
-            }
-            
-            updateCountdown();
-            setInterval(updateCountdown, 1000);
+        document.getElementById('rsvp-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Спасибо! Мы ждем вас.');
         });
     </script>
 </body>
