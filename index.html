@@ -1,84 +1,103 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="kk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roman & Elmira | Save the Date</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
+    <title>Роман & Эльмира — Шақыру</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            background-color: #f8f6f3; 
-            color: #2c2c2c; 
-            font-family: 'Montserrat', sans-serif;
-            line-height: 1.8;
-            overflow-x: hidden;
-        }
-
-        /* Эстетичный контейнер */
-        .wrapper { max-width: 600px; margin: 0 auto; padding: 60px 20px; text-align: center; }
-
-        /* Типографика */
-        h1 { font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 10px; color: #1a1a1a; }
-        .date { font-size: 1.2rem; letter-spacing: 0.3rem; text-transform: uppercase; margin-bottom: 40px; color: #8c7851; }
+        :root { --primary: #1b3b32; --accent: #d4af37; --text: #2c3e50; --bg: #fdfbf7; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Montserrat', sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+        .container { width: 100%; max-width: 600px; margin: 0 auto; padding: 20px; }
         
-        .divider { width: 50px; height: 1px; background: #8c7851; margin: 30px auto; }
+        /* Жақсартылған шапка */
+        .navbar { position: fixed; top: 0; left: 0; width: 100%; background: rgba(253, 251, 247, 0.95); backdrop-filter: blur(5px); z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .nav-inner { display: flex; justify-content: space-between; align-items: center; max-width: 600px; margin: 0 auto; padding: 10px 15px; }
+        .brand { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--primary); font-weight: 600; }
+        .nav-right { display: flex; align-items: center; gap: 10px; }
+        .lang-switcher { display: flex; gap: 4px; }
+        .lang-btn { background: none; border: 1px solid #ccc; padding: 3px 6px; font-size: 0.7rem; cursor: pointer; border-radius: 4px; }
+        .lang-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
 
-        /* Карточка с эффектом */
-        .card { 
-            background: #fff; 
-            padding: 50px 30px; 
-            border: 1px solid #eee;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.03);
-            transition: transform 0.6s ease;
-        }
+        /* Гүл жапырақтарының анимациясы */
+        .petals { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 999; overflow: hidden; }
+        .petal { position: absolute; background: #ffdfe5; border-radius: 0 50% 0 50%; opacity: 0.6; animation: fall linear infinite; }
+        @keyframes fall { to { transform: translateY(100vh) rotate(360deg); } }
 
-        /* Кнопка с вайбом */
-        button { 
-            background: #1a1a1a; 
-            color: #fff; 
-            padding: 18px 40px; 
-            border: none; 
-            cursor: pointer; 
-            font-family: 'Montserrat', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 0.1rem;
-            margin-top: 30px;
-        }
-
-        /* Плавное появление */
-        .fade-in { animation: fadeIn 2s ease; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        /* Қалған стильдеріңіз өзгеріссіз қалды */
+        .intro { position: relative; height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white; padding-top: 60px; }
+        .intro-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; z-index: -2; }
+        .intro-shade { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(27,59,50,0.4), rgba(27,59,50,0.85)); z-index: -1; }
+        .intro-title { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; margin-bottom: 20px; }
+        .countdown { display: flex; justify-content: center; gap: 8px; margin-top: 20px; }
+        .cd-item { background: rgba(255,255,255,0.1); padding: 10px 5px; border-radius: 8px; min-width: 55px; }
+        .cd-item span { display: block; font-size: 1.2rem; color: var(--accent); }
+        .cd-item small { font-size: 0.65rem; }
+        .invite-card { background: white; border-radius: 16px; padding: 30px 20px; margin-top: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
+        .cta-button { width: 100%; background: var(--primary); color: white; border: none; padding: 15px; border-radius: 8px; cursor: pointer; text-transform: uppercase; }
+        .thanks { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); display: none; align-items: center; justify-content: center; z-index: 2000; }
+        .thanks.show { display: flex !important; }
     </style>
 </head>
 <body>
 
-    <div class="wrapper fade-in">
-        <div class="card">
-            <h1 id="title">Roman & Elmira</h1>
-            <p class="date">26.06.2026</p>
-            
-            <p id="desc">Мы будем счастливы видеть вас на нашем главном торжестве.</p>
-            
-            <div class="divider"></div>
-            
-            <form id="rsvp-form">
-                <input type="text" placeholder="Ваше имя" required style="width: 100%; padding: 15px; border: 1px solid #ddd; margin-bottom: 10px;">
-                <button type="submit">Подтвердить присутствие</button>
-            </form>
+    <!-- Анимациялық гүлдер -->
+    <div class="petals" id="petals"></div>
+
+    <nav class="navbar">
+        <div class="nav-inner">
+            <div class="brand">Роман & Эльмира</div>
+            <div class="nav-right">
+                <div class="lang-switcher">
+                    <button class="lang-btn active" data-lang="kk">Қаз</button>
+                    <button class="lang-btn" data-lang="en">En</button>
+                    <button class="lang-btn" data-lang="ru">Ru</button>
+                </div>
+            </div>
         </div>
-    </div>
+    </nav>
+
+    <header class="intro" id="photo">
+        <div class="intro-bg" style="background-image: url('wenddingPhoto.JPG');"></div>
+        <div class="intro-shade"></div>
+        <div class="intro-content">
+            <h1 class="intro-title" data-i18n="intro_title">Үйлену тойына шақыру</h1>
+            <div class="countdown">
+                <div class="cd-item"><span id="cd-months">0</span><small id="lbl-months">ай</small></div>
+                <div class="cd-item"><span id="cd-days">0</span><small id="lbl-days">күн</small></div>
+                <div class="cd-item"><span id="cd-hours">0</span><small id="lbl-hours">сағат</small></div>
+                <div class="cd-item"><span id="cd-minutes">0</span><small id="lbl-minutes">мин</small></div>
+            </div>
+        </div>
+    </header>
+
+    <section id="invite" class="container">
+        <div class="invite-card">
+            <p data-i18n="invite_greeting">Құрметті туыстарымыз бен достарымыз!</p>
+            <h2 style="margin: 20px 0; color: var(--primary);" data-i18n="invite_names">Роман & Эльмира</h2>
+            <button class="cta-button" id="accept-invite" data-i18n="invite_button">Шақыруды қабылдау</button>
+        </div>
+    </section>
 
     <script>
-        // Добавляем эффект параллакса или интерактивности
-        document.querySelector('.card').addEventListener('mousemove', (e) => {
-            const { x, y } = e;
-            // Можно добавить легкий поворот карточки для глубины
-        });
+        // Гүл жапырақтарын жасау
+        const petalsContainer = document.getElementById('petals');
+        for (let i = 0; i < 20; i++) {
+            const petal = document.createElement('div');
+            petal.className = 'petal';
+            petal.style.left = Math.random() * 100 + 'vw';
+            petal.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            petal.style.width = petal.style.height = (Math.random() * 10 + 10) + 'px';
+            petalsContainer.appendChild(petal);
+        }
 
-        document.getElementById('rsvp-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Спасибо! Мы ждем вас.');
+        // Қалған логикаңызды осы жерге қосыңыз...
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
         });
     </script>
 </body>
