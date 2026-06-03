@@ -2,101 +2,102 @@
 <html lang="kk">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Роман & Эльмира — Шақыру</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Роман & Эльмира — Үйлену тойы</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root { --primary: #1b3b32; --accent: #d4af37; --text: #2c3e50; --bg: #fdfbf7; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Montserrat', sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
-        .container { width: 100%; max-width: 600px; margin: 0 auto; padding: 20px; }
+        .container { width: 100%; max-width: 500px; margin: 0 auto; padding: 20px; }
         
-        /* Жақсартылған шапка */
-        .navbar { position: fixed; top: 0; left: 0; width: 100%; background: rgba(253, 251, 247, 0.95); backdrop-filter: blur(5px); z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .nav-inner { display: flex; justify-content: space-between; align-items: center; max-width: 600px; margin: 0 auto; padding: 10px 15px; }
-        .brand { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--primary); font-weight: 600; }
-        .nav-right { display: flex; align-items: center; gap: 10px; }
-        .lang-switcher { display: flex; gap: 4px; }
-        .lang-btn { background: none; border: 1px solid #ccc; padding: 3px 6px; font-size: 0.7rem; cursor: pointer; border-radius: 4px; }
+        /* Nav & Lang */
+        .navbar { position: fixed; top: 0; width: 100%; background: rgba(253, 251, 247, 0.95); backdrop-filter: blur(10px); z-index: 1000; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .lang-switcher { display: flex; gap: 5px; }
+        .lang-btn { background: none; border: 1px solid #ddd; padding: 5px 10px; cursor: pointer; border-radius: 4px; font-size: 0.7rem; }
         .lang-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
 
-        /* Гүл жапырақтарының анимациясы */
-        .petals { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 999; overflow: hidden; }
-        .petal { position: absolute; background: #ffdfe5; border-radius: 0 50% 0 50%; opacity: 0.6; animation: fall linear infinite; }
-        @keyframes fall { to { transform: translateY(100vh) rotate(360deg); } }
+        /* Intro */
+        .intro { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white; background: var(--primary); }
+        .intro-title { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; }
 
-        /* Қалған стильдеріңіз өзгеріссіз қалды */
-        .intro { position: relative; height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white; padding-top: 60px; }
-        .intro-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; z-index: -2; }
-        .intro-shade { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(27,59,50,0.4), rgba(27,59,50,0.85)); z-index: -1; }
-        .intro-title { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; margin-bottom: 20px; }
-        .countdown { display: flex; justify-content: center; gap: 8px; margin-top: 20px; }
-        .cd-item { background: rgba(255,255,255,0.1); padding: 10px 5px; border-radius: 8px; min-width: 55px; }
-        .cd-item span { display: block; font-size: 1.2rem; color: var(--accent); }
-        .cd-item small { font-size: 0.65rem; }
-        .invite-card { background: white; border-radius: 16px; padding: 30px 20px; margin-top: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
-        .cta-button { width: 100%; background: var(--primary); color: white; border: none; padding: 15px; border-radius: 8px; cursor: pointer; text-transform: uppercase; }
-        .thanks { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); display: none; align-items: center; justify-content: center; z-index: 2000; }
-        .thanks.show { display: flex !important; }
+        /* Content */
+        .section { padding: 40px 0; }
+        .invite-card { background: white; border-radius: 20px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: center; }
+        .detail-card { display: flex; align-items: center; background: var(--bg); padding: 15px; margin-bottom: 10px; border-radius: 12px; text-align: left; gap: 15px; }
+        
+        /* Form & Buttons */
+        .cta-button { width: 100%; background: var(--primary); color: white; border: none; padding: 18px; border-radius: 12px; font-size: 1rem; cursor: pointer; margin-top: 20px; }
+        input[type="text"] { width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; margin: 10px 0; }
+
+        /* Animation */
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-in { animation: fadeIn 0.8s ease-out forwards; }
     </style>
 </head>
 <body>
 
-    <!-- Анимациялық гүлдер -->
-    <div class="petals" id="petals"></div>
-
     <nav class="navbar">
-        <div class="nav-inner">
-            <div class="brand">Роман & Эльмира</div>
-            <div class="nav-right">
-                <div class="lang-switcher">
-                    <button class="lang-btn active" data-lang="kk">Қаз</button>
-                    <button class="lang-btn" data-lang="en">En</button>
-                    <button class="lang-btn" data-lang="ru">Ru</button>
-                </div>
-            </div>
+        <div style="font-weight: 600; color: var(--primary);">R & E</div>
+        <div class="lang-switcher">
+            <button class="lang-btn active" data-lang="kk">Қаз</button>
+            <button class="lang-btn" data-lang="en">En</button>
+            <button class="lang-btn" data-lang="ru">Ru</button>
         </div>
     </nav>
 
-    <header class="intro" id="photo">
-        <div class="intro-bg" style="background-image: url('wenddingPhoto.JPG');"></div>
-        <div class="intro-shade"></div>
-        <div class="intro-content">
+    <header class="intro">
+        <div class="intro-content fade-in">
             <h1 class="intro-title" data-i18n="intro_title">Үйлену тойына шақыру</h1>
-            <div class="countdown">
-                <div class="cd-item"><span id="cd-months">0</span><small id="lbl-months">ай</small></div>
-                <div class="cd-item"><span id="cd-days">0</span><small id="lbl-days">күн</small></div>
-                <div class="cd-item"><span id="cd-hours">0</span><small id="lbl-hours">сағат</small></div>
-                <div class="cd-item"><span id="cd-minutes">0</span><small id="lbl-minutes">мин</small></div>
-            </div>
+            <p data-i18n="intro_kicker">22 тамыз, 2026</p>
         </div>
     </header>
 
-    <section id="invite" class="container">
-        <div class="invite-card">
-            <p data-i18n="invite_greeting">Құрметті туыстарымыз бен достарымыз!</p>
-            <h2 style="margin: 20px 0; color: var(--primary);" data-i18n="invite_names">Роман & Эльмира</h2>
-            <button class="cta-button" id="accept-invite" data-i18n="invite_button">Шақыруды қабылдау</button>
+    <section id="invite" class="section">
+        <div class="container">
+            <div class="invite-card fade-in">
+                <p class="invite-greeting" data-i18n="invite_greeting">Құрметті достар!</p>
+                <div style="margin: 20px 0;">
+                    <p data-i18n="invite_text_1">Бізбен бірге</p>
+                    <h2 data-i18n="invite_names">Роман мен Эльмираның</h2>
+                    <p data-i18n="invite_text_2">үйлену тойының куәгері болуға шақырамыз.</p>
+                </div>
+                
+                <div class="detail-card"><span>🗓</span><div><small data-i18n="date_l">Күні</small><div data-i18n="date_v">22 тамыз</div></div></div>
+                <div class="detail-card"><span>📍</span><div><small data-i18n="addr_l">Мекенжай</small><div data-i18n="addr_v">Алматы, Хан-Тенгри, 126</div></div></div>
+
+                <button class="cta-button" onclick="document.getElementById('form').scrollIntoView({behavior:'smooth'})" data-i18n="invite_btn">Шақыруды қабылдау</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="form" class="section">
+        <div class="container">
+            <div class="invite-card">
+                <h2 data-i18n="form_title">Толтыру</h2>
+                <form id="guest-form">
+                    <input type="text" id="guest1" placeholder="Аты-жөніңіз" required>
+                    <button type="submit" class="cta-button" data-i18n="form_btn">Жіберу</button>
+                </form>
+            </div>
         </div>
     </section>
 
     <script>
-        // Гүл жапырақтарын жасау
-        const petalsContainer = document.getElementById('petals');
-        for (let i = 0; i < 20; i++) {
-            const petal = document.createElement('div');
-            petal.className = 'petal';
-            petal.style.left = Math.random() * 100 + 'vw';
-            petal.style.animationDuration = (Math.random() * 3 + 4) + 's';
-            petal.style.width = petal.style.height = (Math.random() * 10 + 10) + 'px';
-            petalsContainer.appendChild(petal);
-        }
+        const translations = {
+            kk: { intro_title: "Үйлену тойына шақыру", intro_kicker: "22 тамыз, 2026", invite_greeting: "Құрметті достар!", invite_text_1: "Бізбен бірге", invite_names: "Роман мен Эльмираның", invite_text_2: "үйлену тойының куәгері болуға шақырамыз.", date_l: "Күні", date_v: "22 тамыз", addr_l: "Мекенжай", addr_v: "Алматы, Хан-Тенгри, 126", invite_btn: "Шақыруды қабылдау", form_title: "Толтыру", form_btn: "Жіберу" },
+            en: { intro_title: "Wedding Invitation", intro_kicker: "August 22, 2026", invite_greeting: "Dear friends!", invite_text_1: "We invite you to join us for", invite_names: "the wedding of Roman & Elmira", invite_text_2: "to share this special day.", date_l: "Date", date_v: "August 22", addr_l: "Address", addr_v: "Almaty, Khan-Tengri, 126", invite_btn: "Accept", form_title: "RSVP", form_btn: "Submit" },
+            ru: { intro_title: "Приглашение на свадьбу", intro_kicker: "22 августа, 2026", invite_greeting: "Дорогие друзья!", invite_text_1: "Приглашаем вас разделить с нами", invite_names: "свадьбу Романа и Эльмиры", invite_text_2: "и стать частью нашего праздника.", date_l: "Дата", date_v: "22 августа", addr_l: "Адрес", addr_v: "Алматы, Хан-Тенгри, 126", invite_btn: "Принять", form_title: "Подтверждение", form_btn: "Отправить" }
+        };
 
-        // Қалған логикаңызды осы жерге қосыңыз...
         document.querySelectorAll('.lang-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
+            btn.addEventListener('click', () => {
+                const lang = btn.getAttribute('data-lang');
                 document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
+                btn.classList.add('active');
+                document.querySelectorAll('[data-i18n]').forEach(el => {
+                    el.textContent = translations[lang][el.getAttribute('data-i18n')];
+                });
             });
         });
     </script>
